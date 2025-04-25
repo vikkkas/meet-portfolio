@@ -14,3 +14,31 @@ body, html {
   font-family: var(--font-family) !important;
 }
 
+.project-cards-container {
+  position: relative;
+  padding-top: 10vh; /* Space for cards to overlap */
+  padding-bottom: 10vh; /* Space after cards */
+}
+
+.project-card {
+  position: sticky;
+  top: 20vh; /* Adjust this value to control where cards stick on screen */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  z-index: 1;
+}
+
+/* Card layers - higher index cards appear on top when scrolling */
+#project-card-1 { z-index: 1; }
+#project-card-2 { z-index: 2; }
+#project-card-3 { z-index: 3; }
+
+/* Add subtle shadow to enhance layered appearance */
+.project-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced appearance when card is in view */
+.project-card.active {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
