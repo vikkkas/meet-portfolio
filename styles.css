@@ -7,6 +7,7 @@
 /* Apply the font family to all elements */
 body, html {
   font-family: var(--font-family);
+  overflow-x: hidden;
 }
 
 /* If you need to override Tailwind styles, use !important */
@@ -16,15 +17,29 @@ body, html {
 
 .project-cards-container {
   position: relative;
-  padding-top: 10vh; /* Space for cards to overlap */
-  padding-bottom: 10vh; /* Space after cards */
+  padding-top: 5vh; /* Reduced padding for mobile */
+  padding-bottom: 5vh;
+}
+
+@media (min-width: 768px) {
+  .project-cards-container {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
 }
 
 .project-card {
-  position: sticky;
-  top: 20vh; /* Adjust this value to control where cards stick on screen */
+  position: relative; /* Default for mobile */
+  margin-bottom: 2rem;
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .project-card {
+    position: sticky;
+    top: 20vh;
+  }
 }
 
 /* Card layers - higher index cards appear on top when scrolling */
@@ -39,6 +54,28 @@ body, html {
 
 /* Enhanced appearance when card is in view */
 .project-card.active {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px); /* Smaller shift on mobile */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 768px) {
+  .project-card.active {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1, h2, .text-[45px] {
+    font-size: 32px !important;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem !important;
+  }
+  
+  .text-xl {
+    font-size: 1.1rem !important;
+  }
 }
