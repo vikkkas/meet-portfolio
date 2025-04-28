@@ -24,10 +24,11 @@
     <header class="min-h-[50vh] md:h-[600px] pt-6 md:pt-[50px] bg-[#E3E3FF]">
         <nav class="flex w-[90%] md:w-[80%] fixed top-4 z-10 justify-between items-center border rounded-full border-black bg-[#ffffff] mx-auto left-0 right-0 p-2 md:p-4">
             <div class="logo">
-                <img src="./assets/meet-logo.svg" alt="Logo" class="ml-2 md:ml-6 h-10 w-10 md:h-14 md:w-14">
+                <img src="./assets/meet-logo.svg" alt="Logo" class="ml-2 md:ml-6 h-8 w-8 md:h-14 md:w-14">
             </div>
             
-            <div class="hidden sm:flex gap-4 md:gap-8">
+            <!-- Desktop menu -->
+            <div class="hidden sm:flex gap-2 md:gap-8">
                 <a href="#" class="text-xl font-light">Home</a>
                 <p>.</p>
                 <a href="#" class="text-xl font-light">Work</a>
@@ -37,22 +38,38 @@
                 <a href="#" class="text-xl font-light">Contact</a>
             </div>
             
-            <div class="icon hidden sm:flex mr-4 md:mr-10 gap-3">
-                <img src="./assets/linkedin.svg" alt="Icon" class="h-10 md:h-12 border shadow-3xl rounded-xl p-2 border-black w-10 md:w-12">
-                <img src="./assets/behance.svg" alt="Icon" class="h-10 md:h-12 border rounded-xl shadow-3xl p-2 border-black w-10 md:w-12">
+            <div class="hidden sm:flex mr-4 md:mr-10 gap-3">
+                <img src="./assets/linkedin.svg" alt="Icon" class="h-10 md:h-12 border rounded-xl p-2 border-black w-10 md:w-12">
+                <img src="./assets/behance.svg" alt="Icon" class="h-10 md:h-12 border rounded-xl p-2 border-black w-10 md:w-12">
             </div>
             
-            <!-- Updated mobile menu button with better styling -->
-            <button class="sm:hidden mr-4 border border-black rounded-full px-4 py-1">
-                Menu
+            <!-- Mobile menu button with hamburger icon -->
+            <button id="mobile-menu-button" class="sm:hidden mr-4 border border-black rounded-full p-2 flex flex-col justify-center items-center gap-[5px] h-10 w-10">
+                <span class="w-5 h-[2px] bg-black"></span>
+                <span class="w-5 h-[2px] bg-black"></span>
+                <span class="w-5 h-[2px] bg-black"></span>
             </button>
         </nav>
 
-        <div class="flex flex-col items-center gap-2">
+        <!-- Mobile menu dropdown -->
+        <div id="mobile-menu" class="hidden fixed top-[70px] left-0 right-0 z-10 bg-white border-t border-black p-4 mx-auto w-[90%] shadow-lg rounded-xl">
+            <div class="flex flex-col items-center gap-4">
+                <a href="#" class="text-xl font-light py-2 border-b border-gray-200 w-full text-center">Home</a>
+                <a href="#" class="text-xl font-light py-2 border-b border-gray-200 w-full text-center">Work</a>
+                <a href="#" class="text-xl font-light py-2 border-b border-gray-200 w-full text-center">About</a>
+                <a href="#" class="text-xl font-light py-2 border-b border-gray-200 w-full text-center">Contact</a>
+                <div class="flex gap-4 mt-2">
+                    <img src="./assets/linkedin.svg" alt="Icon" class="h-10 border rounded-xl p-2 border-black w-10">
+                    <img src="./assets/behance.svg" alt="Icon" class="h-10 border rounded-xl p-2 border-black w-10">
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:mt-0 mt-4 md:pb-0 pb-10 items-center gap-2">
             <div class="text-center text-3xl sm:text-4xl md:text-5xl lg:text-[60px] mt-12 md:mt-[100px] mx-4 sm:mx-8 md:mx-16 lg:mx-[250px] ">
                 Hello! I'm Meet 👋 UI/UX Designer with a Vision for Simplicity
             </div>
-            <div class="text-center text-base sm:text-lg text-[#707070] md:text-xl lg:text-[20px] mt-4 md:mt-[20px] mx-4 sm:mx-12 md:mx-20 lg:mx-[450px]">
+            <div class="text-center text-base sm:text-lg text-[#707070] md:text-xl lg:text-[20px] mt-4 md:mt-[20px] mx-4 sm:mx-12 md:mx-20 lg:mx-[300px] xl:mx-[450px]">
                 Blending creativity and usability to craft intuitive digital experiences that delight users
             </div>
             <div class="text-center bg-[#ffffff] p-4 flex justify-center items-center mt-4 md:mt-[40px] text-2xl border border-black rounded-full h-[50px] w-[220px]">
@@ -63,7 +80,7 @@
 
     <!-- ###################################### WORK ####################################### -->
     <article class="mt-4 md:mt-12 flex flex-col items-center">
-        <div class="font-bold text-[45px]">
+        <div class="font-bold text-center text-[45px]">
             My selected works
         </div>
         <div class="text-[#707070] text-center w-full max-w-[950px] px-4 md:px-8 text-base mt-2">
@@ -170,7 +187,7 @@
         </div>
     </div>
     
-    <div class="text-center bg-[#ffffff] flex justify-center items-center mt-8 md:mt-[60px] text-xl font-light border border-black rounded-full h-[50px] w-[220px] ">
+    <div onclick="window.open('./assets/Meet_Goswami_Resume.pdf')" class="text-center cursor-pointer bg-[#ffffff] flex justify-center items-center mt-8 md:mt-[60px] text-xl font-light border border-black rounded-full h-[50px] w-[220px] ">
         <p>Browse Resume <img class="inline mb-1 ml-2 size-4" src="./assets/top-left_arrow.svg" alt=""></p>
     </div>
 </article>
@@ -315,17 +332,26 @@
         document.addEventListener('DOMContentLoaded', function() {
             const projectCards = document.querySelectorAll('.project-card');
             const projectCardsContainer = document.querySelector('.project-cards-container');
-            const mobileMenuButton = document.querySelector('nav button');
-            const navMenu = document.querySelector('nav .hidden');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
             
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', function() {
-                navMenu.classList.toggle('sm:flex');
-                navMenu.classList.toggle('flex');
-                navMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('hidden');
                 
-                // Change button text based on menu state
-                this.textContent = navMenu.classList.contains('hidden') ? 'Menu' : 'Close';
+                if (mobileMenu.classList.contains('hidden')) {
+                    // Reset to hamburger icon
+                    mobileMenuButton.innerHTML = `
+                        <span class="w-5 h-[2px] bg-black"></span>
+                        <span class="w-5 h-[2px] bg-black"></span>
+                        <span class="w-5 h-[2px] bg-black"></span>
+                    `;
+                } else {
+                    // Change to close icon
+                    mobileMenuButton.innerHTML = `
+                        <img src="./assets/close.svg" alt="Close" class="w-6 h-6">
+                    `;
+                }
             });
             
             // Function to check if an element is in viewport
@@ -358,15 +384,30 @@
             handleScroll();
             
             // Close mobile menu when clicking a link
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
+            const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+            mobileMenuLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    if (window.innerWidth < 640) {
-                        navMenu.classList.add('hidden');
-                        navMenu.classList.remove('flex');
-                        mobileMenuButton.textContent = 'Menu';
-                    }
+                    mobileMenu.classList.add('hidden');
+                    // Reset to hamburger icon
+                    mobileMenuButton.innerHTML = `
+    <span class="w-5 h-[2px] bg-black"></span>
+    <span class="w-5 h-[2px] bg-black"></span>
+    <span class="w-5 h-[2px] bg-black"></span>
+`;
                 });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    // Reset to hamburger icon
+                    mobileMenuButton.innerHTML = `
+    <span class="w-5 h-[2px] bg-black"></span>
+    <span class="w-5 h-[2px] bg-black"></span>
+    <span class="w-5 h-[2px] bg-black"></span>
+`;
+                }
             });
         });
     </script>

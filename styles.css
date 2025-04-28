@@ -2,7 +2,6 @@
 
 :root {
   --font-family: 'Bricolage Grotesque', sans-serif;
-}
 
 /* Apply the font family to all elements */
 body, html {
@@ -67,7 +66,7 @@ body, html {
 
 /* Responsive typography */
 @media (max-width: 640px) {
-  h1, h2, .text-[45px] {
+  h1, h2 {
     font-size: 32px !important;
   }
   
@@ -78,4 +77,5 @@ body, html {
   .text-xl {
     font-size: 1.1rem !important;
   }
+}
 }
